@@ -22,5 +22,12 @@ Barrier::~Barrier()
 //•`‰æˆ—
 void Barrier::Draw(const Vector2D& location)
 {
+	DrawRotaGraphF(location.x, location.y, 1.0, 0.0, image, TRUE);
+}
 
+//õ–½‚ªs‚«‚½‚©H
+bool Barrier::IsFinished(float speed)
+{
+	life_span -= speed;
+	return(life_span <= 0);
 }
