@@ -71,5 +71,98 @@ void SceneManager::Update()
 		Draw();
 
 		//エンドが選択されていたら、ゲームを終了する
+		if (next == eSceneType::E_END)
+		{
+			break;
+		}
+		//現在のシーンと次のシーンが違っていたら、切り替え処理を行う
+		if (next != current_scene->GetNowScene())
+		{
+			ChangeScene(next);
+		}
+		//ESCAPEキーが押されたら、ゲームを終了する
+		if (CheckHitKey(KEY_INPUT_ESCAPE) || InputControl::GetButtonUp(XINPUT_BUTTON_BACK))
+		{
+		break;
+		}
+
+	}
+
+}
+//シーンマネージャー機能：終了時処理
+void SceneManager::Finalize()
+{
+	//シーン情報の削除
+	if (current_scene != nullptr)
+	{
+		current_scene->Finalize();
+		delete current_scene;
+		current_scene = nullptr;
+	}
+
+	//DXライブラリの使用を終了する
+	DxLib_End();
+}
+
+//シーンマネージャー機能：描画処理
+void SceneManager::Draw() const
+{
+	//画面の初期化
+	ClearDrawScreen();
+
+	//シーンの描画
+	current_scene->Draw();
+
+	//裏画面の内容を表画面に反映
+	ScreenFlip();
+}
+
+//シーン切り替え処理
+void SceneManager::ChangeScene(eSceneType scene_type)
+{
+	//シーンを生成する（SceneBaseが継承されているか？）
+	SceneBase* new_scene = dynamic_cast<SceneBase*>(CreateScene(scene_type));
+
+
+	//エラーチェック
+	if (new_scene == nullptr)
+	{
+		throw("シーンが生成できませんでした。\n");
+	}
+
+	//前回シーンの終了時処理を行う
+	if (current_scene != nullptr)
+	{
+		current_scene->Finalize();
+		delete current_scene;
+	}
+
+	//新しく生成したシーンの初期化を行う
+	new_scene->Initialize();
+
+	//現在シーンの更新
+	current_scene = new_scene;
+}
+
+//シーン生成処理
+SceneBase* SceneManager::CreateScene(eSceneType scene_type)
+{
+	//引数（シーンタイプ）によって、生成するシーンを決定する
+	switch (scene_type)
+	{
+	case eSceneType::E_TITLE:
+		return new TitleScene;
+	case eSceneType::E_MAIN:
+		return new GameMainScene;
+	case eScene::E_RESULT:
+		return new ResultScene;
+	case eScene::E_HELP:
+		return new HelpScene;
+	case eScene::E_RANKING_DISP:
+		return new RankingDispScene;
+	case eScene::E_RANKING_INPUT:
+		return new RankingInputScene;
+	default:
+		return nullptr;
 	}
 }
