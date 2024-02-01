@@ -75,7 +75,7 @@ void ResultScene::Draw() const
 	}
 	DrawString(180, 290, "ÉXÉRÉA", GetColor(0, 0, 0));
 
-	DrawString(180, 290, 0xFFFFFF, "   =%6d", score);
+	DrawFormatString(180, 290, 0xFFFFFF, "   =%6d", score);
 
 }
 

@@ -105,7 +105,7 @@ void TitleScene::Finalize()
 }
 
 //Œ»İ‚ÌƒV[ƒ“î•ñ‚ğæ“¾
-eSeneType TitleScene::GetNowScene() const
+eSceneType TitleScene::GetNowScene() const
 {
 	return eSceneType::E_TITLE;
 }

@@ -45,7 +45,7 @@ void RankingInputScene::Initialize()
 	fscanf_s(fp, "%6d,\n", &score);
 
 	//ファイルクローズ
-	fscanf_s(fp);
+	fclose(fp);
 }
 
 //更新処理
@@ -96,7 +96,7 @@ void RankingInputScene::Draw() const
 	{
 		int x = cursor_x * font_size + 10;
 		int y = cursor_y * font_size + 295;
-		DrawBox(x, y, x + font_size, y + font_size, Getcolor(255, 255, 255), FALSE);
+		DrawBox(x, y, x + font_size, y + font_size, GetColor(255, 255, 255), FALSE);
 	}
 	else
 	{

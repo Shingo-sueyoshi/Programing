@@ -67,7 +67,7 @@ void RankingDispScene::Finalize()
 }
 
 //Œ»İ‚ÌƒV[ƒ“î•ñ‚ğæ“¾
-eSceneType RamkingDispScene::GetNowScene() const
+eSceneType RankingDispScene::GetNowScene() const
 {
 	return eSceneType::E_RANKING_DISP;
 }

@@ -19,7 +19,7 @@ SceneManager::~SceneManager()
 }
 
 //シーンマネージャー機能：初期化処理
-void SceneManager;; Initialize()
+void SceneManager;;Initialize()
 {
 	//ウィンドウのタイトルを設定
 	SetMainWindowText("Drive&Avoid");
@@ -56,7 +56,7 @@ void SceneManager::Update()
 	while (ProcessMessage() != -1)
 	{
 		//現在時間を取得
-		LONGLONG now_time = GetNowHiPerFormanceCount();
+		LONGLONG now_time = GetNowHiPerformanceCount();
 
 		//1フレーム当たりの時間を更新する
 		start_time = now_time;
@@ -154,13 +154,13 @@ SceneBase* SceneManager::CreateScene(eSceneType scene_type)
 		return new TitleScene;
 	case eSceneType::E_MAIN:
 		return new GameMainScene;
-	case eScene::E_RESULT:
+	case eSceneType::E_RESULT:
 		return new ResultScene;
-	case eScene::E_HELP:
+	case eSceneType::E_HELP:
 		return new HelpScene;
-	case eScene::E_RANKING_DISP:
+	case eSceneType::E_RANKING_DISP:
 		return new RankingDispScene;
-	case eScene::E_RANKING_INPUT:
+	case eSceneType::E_RANKING_INPUT:
 		return new RankingInputScene;
 	default:
 		return nullptr;

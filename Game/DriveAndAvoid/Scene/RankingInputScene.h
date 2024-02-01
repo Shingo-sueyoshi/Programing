@@ -23,7 +23,7 @@ public:
 	virtual void Draw() const override;
 	virtual void Finalize() override;
 
-	virtual eSceneType GetNowScene() override;
+	virtual eSceneType GetNowScene() const override;
 
 
 private:

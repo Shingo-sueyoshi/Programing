@@ -12,7 +12,7 @@ void InputControl::Update()
 {
 	//XInputコントローラーの入力値を取得する
 	XINPUT_STATE input_state = {};
-	GetJoyXInputState(DX_INPUT_PAD1, &input_state);
+	GetJoypadXInputState(DX_INPUT_PAD1, &input_state);
 
 	//ボタン入力値の更新
 	for (int i = 0; i < 16; i++)
@@ -23,7 +23,7 @@ void InputControl::Update()
 
 	//トリガー入力値の更新(-0.0f～1.0fに範囲を制限する)
 	trigger[0] = (float)input_state.LeftTrigger / (float)UCHAR_MAX;
-	trigger[0] = (float)input_state.RighTrigger / (float)UCHAR_MAX;
+	trigger[0] = (float)input_state.RightTrigger / (float)UCHAR_MAX;
 
 	//左スティック入力値の更新(-1.0f～1.0fに範囲を制限する)
 	if (input_state.ThumbLX > 0.0f)
