@@ -127,7 +127,7 @@ void Player::DecreaseHp(float value)
 //ˆÊ’uî•ñŽæ“¾ˆ—
 Vector2D Player::GetLocation()const
 {
-	return this->Iocation;
+	return this->location;
 }
 
 //“–‚½‚è”»’è‚Ì‘å‚«‚³Žæ“¾ˆ—

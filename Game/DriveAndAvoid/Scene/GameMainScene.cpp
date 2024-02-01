@@ -268,6 +268,6 @@ bool GameMainScene::IsHitCheck(Player* p, Enemy* e)
 	Vector2D box_ex = p->GetBoxSize() + e->GetBoxSize();
 
 	//子リジョンデータより位置情報の差分が小さいなら、ヒット判定とする
-	return((fabsf(diff_location.x) < box_ex.x) && (fabsf(diff_location.y) < box.ex.y));
+	return((fabsf(diff_location.x) < box_ex.x) && (fabsf(diff_location.y) < box_ex.y));
 }
 

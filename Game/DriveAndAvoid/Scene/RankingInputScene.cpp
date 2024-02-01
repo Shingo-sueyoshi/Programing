@@ -85,7 +85,7 @@ void RankingInputScene::Draw() const
 		int x = (i % 13) * font_size + 15;
 		int y = (i / 13) * font_size + 300;
 		DrawFormatString(x, y, GetColor(255, 255, 255), "%-3c", 'a' + i);
-		int y = ((i / 13) + 2) * font_size + 300;
+		y = ((i / 13) + 2) * font_size + 300;
 		DrawFormatString(x, y, GetColor(255, 255, 255), "%-3c", 'A' + i);
 	}
 	DrawString(40, 405, "Œˆ’è", GetColor(255, 255, 255));

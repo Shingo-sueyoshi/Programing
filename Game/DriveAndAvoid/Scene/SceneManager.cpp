@@ -19,7 +19,7 @@ SceneManager::~SceneManager()
 }
 
 //シーンマネージャー機能：初期化処理
-void SceneManager;;Initialize()
+void SceneManager:: Initialize()
 {
 	//ウィンドウのタイトルを設定
 	SetMainWindowText("Drive&Avoid");
