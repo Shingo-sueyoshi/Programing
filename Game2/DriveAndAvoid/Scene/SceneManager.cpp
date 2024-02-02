@@ -58,27 +58,32 @@ void SceneManager::Update()
 		//現在時間を取得
 		LONGLONG now_time = GetNowHiPerformanceCount();
 
-		//1フレーム当たりの時間を更新する
-		start_time = now_time;
-
-		//入力機能：更新処理
-		InputControl::Update();
-
-		//更新処理(戻り値は次のシーン情報)
-		eSceneType next = current_scene->Update();
-
-		//描画処理
-		Draw();
-
-		//エンドが選択されていたら、ゲームを終了する
-		if (next == eSceneType::E_END)
+		//1フレーム当たりの時間に到達したら、更新および描画処理を行う
+		if ((now_time - start_time) >= DELTA_SECOND)
 		{
-			break;
-		}
-		//現在のシーンと次のシーンが違っていたら、切り替え処理を行う
-		if (next != current_scene->GetNowScene())
-		{
-			ChangeScene(next);
+
+			//1フレーム当たりの時間を更新する
+			start_time = now_time;
+
+			//入力機能：更新処理
+			InputControl::Update();
+
+			//更新処理(戻り値は次のシーン情報)
+			eSceneType next = current_scene->Update();
+
+			//描画処理
+			Draw();
+
+			//エンドが選択されていたら、ゲームを終了する
+			if (next == eSceneType::E_END)
+			{
+				break;
+			}
+			//現在のシーンと次のシーンが違っていたら、切り替え処理を行う
+			if (next != current_scene->GetNowScene())
+			{
+				ChangeScene(next);
+			}
 		}
 		//ESCAPEキーが押されたら、ゲームを終了する
 		if (CheckHitKey(KEY_INPUT_ESCAPE) || InputControl::GetButtonUp(XINPUT_BUTTON_BACK))

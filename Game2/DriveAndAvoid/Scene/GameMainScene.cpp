@@ -65,8 +65,7 @@ eSceneType GameMainScene::Update()
 	player->Update();
 
 	//ˆÚ“®ˆ—‚ÌXV
-	mileage += (int)player->GetSpeed
-	() + 5;
+	mileage += (int)player->GetSpeed() + 5;
 
 	//“G¶¬ˆ—
 	if (mileage / 20 % 100 == 0)
